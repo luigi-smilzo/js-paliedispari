@@ -11,6 +11,10 @@ Pari e Dispari
     -Dichiariamo chi ha vinto.
 */
 
+/**
+ * PALINDROMIC CHECK
+ */
+
 var word = prompt('Inserisci una parola');
 var wordInverted = invert(word);
 
@@ -30,3 +34,49 @@ function invert(insertedWord) {
     return drow;
 }
 
+/**
+ * PARITY CHECK
+ */
+
+// references
+var numPar = prompt('Pari o dispari?').toLowerCase();
+var num = parseInt(prompt('Inserisci un numero da 1 a 5'));
+var numCpu = Math.floor( Math.random() * 5) + 1;
+var result = sum(num, numCpu);
+var parCheck = parityCheck(result);
+console.log('Scelta pari o dispari: ', numPar);
+console.log('Numero scelto: ', num);
+console.log('Numero random CPU: ', numCpu);
+console.log('Somma dei due numeri: ', result);
+console.log('Controllo parità della somma: ', parCheck);
+
+numPar = convertToBoolean(numPar);
+console.log('Conversione numero del Giocatore in valore booleano: ', numPar);
+
+if ( numPar !== parCheck) {
+    console.log('Hai perso!');
+} else {
+    console.log('Hai vinto!');
+}
+
+// functions
+function sum(num1, num2) {
+    return num1 + num2;
+}
+
+function parityCheck(param) {
+    if (param % 2 == 0) {
+        return true;
+    }
+    return false;
+}
+
+function convertToBoolean(parity) {
+    if ( parity === 'pari') {
+        return true;
+    } else if ( parity === 'dispari') {
+        return false;
+    } else {
+        alert('Non valido, inserisci pari o dispari');
+    }
+} 
