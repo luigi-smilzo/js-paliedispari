@@ -39,8 +39,18 @@ function invert(insertedWord) {
  */
 
 // references
-var numPar = prompt('Pari o dispari?').toLowerCase();
+var numPar = prompt('Pari o dispari?').toLowerCase().trim();
+
+while (numPar !== 'pari' && numPar !== 'dispari') {
+    numPar = prompt('Per favore, inserire pari o dispari').toLowerCase().trim();
+}
+
 var num = parseInt(prompt('Inserisci un numero da 1 a 5'));
+
+while ( (num <1 || num > 5) || isNaN(num) ) {
+    num = parseInt(prompt('Per favore, inserisci un numero da 1 a 5'));
+}
+
 var numCpu = getRandomNumber(1, 5);
 var result = sum(num, numCpu);
 var parCheck = parityCheck(result);
@@ -80,7 +90,4 @@ function convertToBoolean(parity) {
         return true;
     } else if ( parity === 'dispari') {
         return false;
-    } else {
-        alert('Non valido, inserisci pari o dispari');
-    }
 } 
