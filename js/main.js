@@ -41,7 +41,7 @@ function invert(insertedWord) {
 // references
 var numPar = prompt('Pari o dispari?').toLowerCase();
 var num = parseInt(prompt('Inserisci un numero da 1 a 5'));
-var numCpu = Math.floor( Math.random() * 5) + 1;
+var numCpu = getRandomNumber(1, 5);
 var result = sum(num, numCpu);
 var parCheck = parityCheck(result);
 console.log('Scelta pari o dispari: ', numPar);
@@ -60,6 +60,10 @@ if ( numPar !== parCheck) {
 }
 
 // functions
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function sum(num1, num2) {
     return num1 + num2;
 }
